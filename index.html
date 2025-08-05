@@ -4,13 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vijaya B | DevOps Engineer</title>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
   <header>
-    <div class="overlay"></div>
-    <h1 data-aos="fade-down">Vijaya B</h1>
+    <h1 data-aos="fade-down">Hello! 👋 I'm <span class="highlight">Vijaya</span></h1>
     <p data-aos="fade-up">DevOps & Cloud Automation Engineer</p>
     <nav data-aos="fade-up" data-aos-delay="200">
       <a href="#about">About</a>
@@ -21,102 +20,47 @@
       <a href="Vijaya.B_Devops_Engineer_Resume_2025.pdf" download>Resume</a>
     </nav>
   </header>
-  
 
   <section id="about">
     <h2>About Me</h2>
     <p>Results-driven DevOps Engineer with 6+ years experience in cloud automation, CI/CD pipelines, infrastructure monitoring, and security compliance. Skilled across AWS, Azure, Terraform, Jenkins, Kubernetes, and more.</p>
   </section>
 
-  <section id="skills">
-    <h2>Technical Skills</h2>
-    <ul>
-      <li>AWS, Azure, Kubernetes, Docker</li>
-      <li>Terraform, Ansible, CloudFormation</li>
-      <li>Jenkins, GitHub Actions, Azure DevOps</li>
-      <li>Prometheus, Grafana, Dynatrace</li>
-      <li>Python, Bash, Shell scripting</li>
-    </ul>
+  <section id="skills" class="skills-container">
+    <div class="skills-text">
+      <h2>Technical Skills</h2>
+      <ul>
+        <li>AWS, Azure, Kubernetes, Docker</li>
+        <li>Terraform, Ansible, CloudFormation</li>
+        <li>Jenkins, GitHub Actions, Azure DevOps</li>
+        <li>Prometheus, Grafana, Dynatrace</li>
+        <li>Python, Bash, Shell scripting</li>
+      </ul>
+    </div>
+    <div class="skills-animation">
+      <img src="animations/animation-1.gif" alt="DevOps Animation" />
+    </div>
   </section>
 
   <section id="projects">
     <h2>Featured Projects</h2>
-    <div class="project">
-      <h3>IAM Key Rotation Automation</h3>
-      <p>Developed an AWS Lambda system to rotate IAM keys across accounts, ensuring full compliance with AWS policies.</p>
-    </div>
-    <div class="project">
-      <h3>Jira Email Integration with Azure</h3>
-      <p>Automated Jira ticket creation from Outlook emails via OAuth 2.0, saving 60% manual effort.</p>
-    </div>
-    <div class="project">
-      <h3>Jenkins-Based User Provisioning</h3>
-      <p>Built a Jenkins pipeline for QA user access automation, integrating SQL and Jira workflows.</p>
-    </div>
-    <div class="project">
-      <h3>GitHub-Jira Autolinks</h3>
-      <p>Automated project linking between GitHub and Jira via REST APIs and Jenkins schedules.</p>
-    </div>
-    <div class="project">
-      <h3>Automated Configuration Validation</h3>
-      <p>Used Jenkins and Azure Key Vault to automate PR-based validation of config files with secret scanning and syntax checks.</p>
-    </div>
-    <div class="project">
-      <h3>Automated AWS Service Termination & Account Deletion</h3>
-      <p>Created secure workflows for AWS deprovisioning using Azure DevOps pipelines and Postman API integrations.</p>
-    </div>
-    <div class="project">
-      <h3>AWS Tag Compliance Monitoring</h3>
-      <p>Automated tagging audits across AWS accounts using Lambda, IAM Roles Anywhere, and daily reports to S3.</p>
-    </div>
-    <div class="project">
-      <h3>AWS Account Reorganization</h3>
-      <p>Developed a system to auto-reclassify AWS accounts in Organizations API using Lambda & EventBridge.</p>
-    </div>
-    <div class="project">
-      <h3>Dynatrace Injection Automation</h3>
-      <p>Scripted PowerShell automation to deploy Dynatrace agents across Azure App Services and on-prem servers.</p>
-    </div>
+    <div class="project"><h3>IAM Key Rotation Automation</h3><p>Developed an AWS Lambda system to rotate IAM keys across accounts, ensuring full compliance with AWS policies.</p></div>
+    <div class="project"><h3>Jira Email Integration with Azure</h3><p>Automated Jira ticket creation from Outlook emails via OAuth 2.0, saving 60% manual effort.</p></div>
+    <div class="project"><h3>Jenkins-Based User Provisioning</h3><p>Built a Jenkins pipeline for QA user access automation, integrating SQL and Jira workflows.</p></div>
+    <div class="project"><h3>GitHub-Jira Autolinks</h3><p>Automated project linking between GitHub and Jira via REST APIs and Jenkins schedules.</p></div>
+    <div class="project"><h3>Automated Configuration Validation</h3><p>Used Jenkins and Azure Key Vault to automate PR-based validation of config files with secret scanning and syntax checks.</p></div>
+    <div class="project"><h3>Automated AWS Service Termination & Account Deletion</h3><p>Created secure workflows for AWS deprovisioning using Azure DevOps pipelines and Postman API integrations.</p></div>
+    <div class="project"><h3>AWS Tag Compliance Monitoring</h3><p>Automated tagging audits across AWS accounts using Lambda, IAM Roles Anywhere, and daily reports to S3.</p></div>
+    <div class="project"><h3>AWS Account Reorganization</h3><p>Developed a system to auto-reclassify AWS accounts in Organizations API using Lambda & EventBridge.</p></div>
+    <div class="project"><h3>Dynatrace Injection Automation</h3><p>Scripted PowerShell automation to deploy Dynatrace agents across Azure App Services and on-prem servers.</p></div>
   </section>
 
   <section id="experience">
     <h2>Work Experience</h2>
-    <div class="job">
-      <h3>DevOps Analyst – PointClickCare, Mississauga</h3>
-      <p><em>Mar 2024 – Present</em></p>
-      <ul>
-        <li>Optimized Jenkins pipelines and implemented dynamic retry logic, reducing build failures by 30%.</li>
-        <li>Integrated Prometheus, Grafana, and Alertmanager for proactive infrastructure monitoring.</li>
-        <li>Designed disaster recovery workflows using Terraform and AWS Backup with 99.9% data availability.</li>
-      </ul>
-    </div>
-    <div class="job">
-      <h3>Sr. Systems Engineer – Deloitte, Toronto</h3>
-      <p><em>Nov 2022 – Feb 2024</em></p>
-      <ul>
-        <li>Automated cloud governance across 50+ AWS accounts using Lambda and Python scripts.</li>
-        <li>Implemented IAM key rotation and tagging compliance audits, improving security and cost tracking.</li>
-        <li>Enhanced monitoring using Dynatrace and AWS CloudWatch, reducing incident detection time by 50%.</li>
-      </ul>
-    </div>
-    <div class="job">
-      <h3>DevOps Engineer – Roche, Mississauga</h3>
-      <p><em>Mar 2022 – Oct 2022</em></p>
-      <ul>
-        <li>Optimized Kubernetes cluster performance, reducing downtime and deployment failures by 40%.</li>
-        <li>Automated CI/CD pipelines and infrastructure provisioning, cutting deployment time by 35%.</li>
-        <li>Enforced security compliance via automated scans and GitOps workflows.</li>
-      </ul>
-    </div>
-    <div class="job">
-      <h3>IT Support Engineer – BLS International, Winnipeg</h3>
-      <p><em>Sep 2018 – Feb 2022</em></p>
-      <ul>
-        <li>Managed IT support for visa/passport systems, reducing downtime by 30%.</li>
-        <li>Enforced data security protocols and GDPR compliance through access controls and encryption.</li>
-        <li>Automated biometric processing and IT workflows, improving operational efficiency.</li>
-      </ul>
-    </div>
+    <div class="job"><h3>DevOps Analyst – PointClickCare, Mississauga</h3><p><em>Mar 2024 – Present</em></p><ul><li>Optimized Jenkins pipelines and implemented dynamic retry logic, reducing build failures by 30%.</li><li>Integrated Prometheus, Grafana, and Alertmanager for proactive infrastructure monitoring.</li><li>Designed disaster recovery workflows using Terraform and AWS Backup with 99.9% data availability.</li></ul></div>
+    <div class="job"><h3>Sr. Systems Engineer – Deloitte, Toronto</h3><p><em>Nov 2022 – Feb 2024</em></p><ul><li>Automated cloud governance across 50+ AWS accounts using Lambda and Python scripts.</li><li>Implemented IAM key rotation and tagging compliance audits, improving security and cost tracking.</li><li>Enhanced monitoring using Dynatrace and AWS CloudWatch, reducing incident detection time by 50%.</li></ul></div>
+    <div class="job"><h3>DevOps Engineer – Roche, Mississauga</h3><p><em>Mar 2022 – Oct 2022</em></p><ul><li>Optimized Kubernetes cluster performance, reducing downtime and deployment failures by 40%.</li><li>Automated CI/CD pipelines and infrastructure provisioning, cutting deployment time by 35%.</li><li>Enforced security compliance via automated scans and GitOps workflows.</li></ul></div>
+    <div class="job"><h3>IT Support Engineer – BLS International, Winnipeg</h3><p><em>Sep 2018 – Feb 2022</em></p><ul><li>Managed IT support for visa/passport systems, reducing downtime by 30%.</li><li>Enforced data security protocols and GDPR compliance through access controls and encryption.</li><li>Automated biometric processing and IT workflows, improving operational efficiency.</li></ul></div>
   </section>
 
   <section id="contact">
@@ -128,9 +72,8 @@
   <footer>
     <p>&copy; 2025 Vijaya B. All rights reserved.</p>
   </footer>
+
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
+  <script>AOS.init();</script>
 </body>
 </html>
