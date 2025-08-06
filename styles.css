@@ -76,3 +76,24 @@ footer {
   section { padding: 2rem 1rem; }
   nav a { margin: 6px; display: inline-block; }
 }
+
+/* Add this at the end of styles.css */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+}
+
+th, td {
+  border: 1px solid #d1d5db;
+  padding: 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background-color: #f3f4f6;
+  font-weight: 600;
+  color: #1f2937;
+}
