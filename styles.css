@@ -10,6 +10,19 @@ body {
   font-family: 'IBM Plex Mono', monospace;
   line-height: 1.6;
   padding: 0 1.5rem;
+  position: relative;
+  z-index: 0;
+}
+
+#network-bg,
+#cursor-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
 }
 
 h1 {
@@ -81,21 +94,6 @@ footer {
   border-top: 1px solid #e5e7eb;
 }
 
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2.2rem;
-  }
-
-  section {
-    padding: 2rem 1rem;
-  }
-
-  nav a {
-    margin: 6px;
-    display: inline-block;
-  }
-}
-
 /* Table Styles */
 table {
   width: 100%;
@@ -123,11 +121,18 @@ td:first-child {
   font-weight: 500;
 }
 
-/* Canvas Cursor Effect */
-#cursor-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 9999;
+/* Responsive */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  section {
+    padding: 2rem 1rem;
+  }
+
+  nav a {
+    margin: 6px;
+    display: inline-block;
+  }
 }
