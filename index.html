@@ -193,5 +193,23 @@
   </section>
 
   <footer><p>© 2025 Vijaya B. All rights reserved.</p></footer>
+<script>
+let lastX = 0, lastY = 0;
+document.addEventListener('mousemove', function(e) {
+  const dist = Math.hypot(e.clientX - lastX, e.clientY - lastY);
+  if (dist < 25) return; // Skip tiny moves
+
+  lastX = e.clientX;
+  lastY = e.clientY;
+
+  const ripple = document.createElement('div');
+  ripple.className = 'cursor-ripple';
+  ripple.style.left = `${e.clientX}px`;
+  ripple.style.top = `${e.clientY}px`;
+  document.body.appendChild(ripple);
+
+  ripple.addEventListener('animationend', () => ripple.remove());
+});
+</script>
 </body>
 </html>

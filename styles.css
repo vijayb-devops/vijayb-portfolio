@@ -147,3 +147,22 @@ td:first-child {
   white-space: nowrap;
   /* Do NOT set font-weight here so <strong> works */
 }
+
+.cursor-ripple {
+  position: fixed;
+  pointer-events: none;
+  width: 10px;
+  height: 10px;
+  border: 2px solid rgba(30, 78, 216, 0.4); /* Use your brand color */
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: ripple-effect 0.8s ease-out;
+  z-index: 9999;
+}
+
+@keyframes ripple-effect {
+  to {
+    transform: translate(-50%, -50%) scale(10);
+    opacity: 0;
+  }
+}
