@@ -75,5 +75,17 @@
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init();</script>
+
+  <!-- Ripple effect -->
+  <script>
+    const section = document.querySelector('#skills');
+    section.addEventListener('mousemove', function(e) {
+      const rect = section.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      section.style.setProperty('--x', `${x}%`);
+      section.style.setProperty('--y', `${y}%`);
+    });
+  </script>
 </body>
 </html>
