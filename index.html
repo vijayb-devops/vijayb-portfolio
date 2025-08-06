@@ -10,6 +10,7 @@
 <body>
   <canvas id="network-bg"></canvas>
   <canvas id="cursor-canvas"></canvas>
+  <canvas id="matrix-rain"></canvas>
   <header>
    <h1>
   <span style="font-size: 1.8rem; color: #111;">Hello! 👋</span><br>
@@ -244,58 +245,44 @@
   animate();
 })();
 </script>
-  <!-- Network Node Script -->
-  <script>
-    const netCanvas = document.getElementById('network-bg');
-    const netCtx = netCanvas.getContext('2d');
-    let width, height;
+<script>
+  const canvas = document.getElementById('matrix-rain');
+  const ctx = canvas.getContext('2d');
 
-    function resizeNet(){
-      width = netCanvas.width = window.innerWidth;
-      height = netCanvas.height = window.innerHeight;
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  const characters = '{}#$>=:_|.%[]~';
+  const fontSize = 14;
+  const columns = Math.floor(canvas.width / fontSize);
+  const drops = new Array(columns).fill(1);
+
+  function drawMatrix() {
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.05)'; // Light fade trail
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = '#1d4ed8'; // DevOps Blue
+    ctx.font = fontSize + 'px monospace';
+
+    for (let i = 0; i < drops.length; i++) {
+      const char = characters[Math.floor(Math.random() * characters.length)];
+      ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+
+      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        drops[i] = 0;
+      }
+      drops[i]++;
     }
-    window.addEventListener('resize', resizeNet);
-    resizeNet();
 
-    const nodes = [];
-    for(let i=0;i<80;i++){
-      nodes.push({
-        x: Math.random()*width,
-        y: Math.random()*height,
-        vx: (Math.random()-0.5)*0.3,
-        vy: (Math.random()-0.5)*0.3,
-      });
-    }
+    requestAnimationFrame(drawMatrix);
+  }
 
-    function drawNetwork(){
-      netCtx.clearRect(0,0,width,height);
-      nodes.forEach(n=>{
-        n.x += n.vx;
-        n.y += n.vy;
-        if(n.x<0||n.x>width) n.vx*=-1;
-        if(n.y<0||n.y>height) n.vy*=-1;
-
-        nodes.forEach(o=>{
-          const dx = n.x-o.x, dy = n.y-o.y;
-          const dist = Math.hypot(dx,dy);
-          if(dist<150){
-            netCtx.strokeStyle = `hsla(210, 70%, 60%, ${1-dist/150})`;
-            netCtx.lineWidth = 1;
-            netCtx.beginPath();
-            netCtx.moveTo(n.x,n.y);
-            netCtx.lineTo(o.x,o.y);
-            netCtx.stroke();
-          }
-        });
-
-        netCtx.fillStyle = 'hsla(210, 70%, 60%, 0.6)';
-        netCtx.beginPath();
-        netCtx.arc(n.x, n.y, 2, 0, 2 * Math.PI);
-        netCtx.fill();
-      });
-      requestAnimationFrame(drawNetwork);
-    }
-    drawNetwork();
-  </script>
+  drawMatrix();
+</script>  
 </body>
 </html>
