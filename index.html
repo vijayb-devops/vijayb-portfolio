@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <canvas id="cursor-canvas"></canvas>
   <header>
    <h1>
   <span style="font-size: 1.8rem; color: #111;">Hello! 👋</span><br>
@@ -193,23 +194,55 @@
   </section>
 
   <footer><p>© 2025 Vijaya B. All rights reserved.</p></footer>
+
 <script>
-let lastX = 0, lastY = 0;
-document.addEventListener('mousemove', function(e) {
-  const dist = Math.hypot(e.clientX - lastX, e.clientY - lastY);
-  if (dist < 25) return; // Skip tiny moves
+;(function(){
+  const canvas = document.getElementById('cursor-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let hue = 0;
 
-  lastX = e.clientX;
-  lastY = e.clientY;
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
 
-  const ripple = document.createElement('div');
-  ripple.className = 'cursor-ripple';
-  ripple.style.left = `${e.clientX}px`;
-  ripple.style.top = `${e.clientY}px`;
-  document.body.appendChild(ripple);
+  document.addEventListener('mousemove', (e) => {
+    for (let i = 0; i < 3; i++) { // multiple per move for fluid effect
+      particles.push({
+        x: e.clientX + (Math.random() - 0.5) * 10,
+        y: e.clientY + (Math.random() - 0.5) * 10,
+        size: 15 + Math.random() * 20,
+        hue: hue,
+        life: 0
+      });
+    }
+  });
 
-  ripple.addEventListener('animationend', () => ripple.remove());
-});
+  function animate() {
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.08)'; // soft background fade
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    particles = particles.filter(p => p.life < 100);
+    particles.forEach(p => {
+      p.life++;
+      const opacity = 1 - p.life / 100;
+      ctx.fillStyle = `hsla(${p.hue}, 70%, 60%, ${opacity * 0.5})`;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size * opacity, 0, 2 * Math.PI);
+      ctx.fill();
+    });
+
+    hue += 0.5; // smooth hue shift
+    if (hue > 360) hue = 0;
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+})();
 </script>
 </body>
 </html>

@@ -1,4 +1,8 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
   background: white;
@@ -8,7 +12,11 @@ body {
   padding: 0 1.5rem;
 }
 
-h1 { font-size: 3rem; font-weight: 700; color: #1d4ed8; }
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #1d4ed8;
+}
 
 header {
   text-align: center;
@@ -52,11 +60,13 @@ ul {
   margin: 1rem 0;
 }
 
-.project, .job {
+.project,
+.job {
   margin-bottom: 1.5rem;
 }
 
-.project h3, .job h3 {
+.project h3,
+.job h3 {
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
@@ -72,12 +82,21 @@ footer {
 }
 
 @media (max-width: 768px) {
-  h1 { font-size: 2.2rem; }
-  section { padding: 2rem 1rem; }
-  nav a { margin: 6px; display: inline-block; }
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  section {
+    padding: 2rem 1rem;
+  }
+
+  nav a {
+    margin: 6px;
+    display: inline-block;
+  }
 }
 
-/* Add this at the end of styles.css */
+/* Table Styles */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -85,27 +104,8 @@ table {
   font-size: 0.95rem;
 }
 
-th, td {
-  border: 1px solid #d1d5db;
-  padding: 0.75rem;
-  text-align: left;
-  vertical-align: top;
-}
-
-th {
-  background-color: #f3f4f6;
-  font-weight: 600;
-  color: #1f2937;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1.5rem;
-  font-size: 0.95rem;
-}
-
-th, td {
+th,
+td {
   border: 1px solid #d1d5db;
   padding: 0.75rem;
   text-align: left;
@@ -123,48 +123,11 @@ td:first-child {
   font-weight: 500;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1.5rem;
-  font-size: 0.95rem;
-}
-
-th, td {
-  border: 1px solid #d1d5db;
-  padding: 0.75rem;
-  text-align: left;
-  vertical-align: top;
-}
-
-th {
-  background-color: #f3f4f6;
-  font-weight: 600;
-  color: #1f2937;
-}
-
-td:first-child {
-  white-space: nowrap;
-  /* Do NOT set font-weight here so <strong> works */
-}
-
-.cursor-ripple {
+/* Canvas Cursor Effect */
+#cursor-canvas {
   position: fixed;
+  top: 0;
+  left: 0;
   pointer-events: none;
-  width: 15px;
-  height: 15px;
-  background-color: rgba(29, 78, 216, 0.4); /* Make it visible */
-  border: none;
-  border-radius: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  animation: ripple-effect 0.8s ease-out;
   z-index: 9999;
-}
-
-
-@keyframes ripple-effect {
-  to {
-    transform: translate(-50%, -50%) scale(20);
-    opacity: 0;
-  }
 }
