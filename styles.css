@@ -147,3 +147,12 @@ td:first-child {
   white-space: nowrap;
   /* Do NOT set font-weight here so <strong> works */
 }
+
+.company-logo {
+  height: 1.2em;
+  max-height: 22px;
+  width: auto;
+  vertical-align: middle;
+  margin: 0 6px;
+  object-fit: contain;
+}
