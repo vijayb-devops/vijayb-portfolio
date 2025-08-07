@@ -1,4 +1,4 @@
-/* === RESET & BASE STYLES === */
+/* Reset & Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -15,40 +15,51 @@ body {
   z-index: 0;
 }
 
-/* === CANVAS LAYERS === */
-#particles-js,
-#cursor-canvas,
-#matrix-rain,
-#network-canvas {
+/* Particle Background */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background: white;
+}
+
+/* Subtle Gradient Wave Separator */
+.wave-separator {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(180deg, rgba(29,78,216,0.1), transparent);
+  z-index: -1;
+}
+
+/* Cursor Trail Canvas */
+#cursor-canvas {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: -2;
+  z-index: -1;
 }
 
-#matrix-rain {
-  z-index: -5;
-  background: transparent;
-}
-
-.hero-text h1,
-.hero-text p,
-.hero-text nav {
-  position: relative;
-  z-index: 2;
-}
-
-/* === TYPOGRAPHY & NAV === */
+/* Typography & Header */
 h1 {
   font-size: 3rem;
   font-weight: 700;
   color: #1d4ed8;
 }
 
-.hero-text p {
+header {
+  text-align: center;
+  padding: 4rem 1rem;
+  margin-top: -60px;
+}
+
+header p {
   margin-top: 0.5rem;
   font-size: 1.2rem;
   color: #4b5563;
@@ -69,7 +80,7 @@ nav a:hover {
   text-decoration: underline;
 }
 
-/* === SECTIONS === */
+/* Sections */
 section {
   padding: 3rem 1rem;
 }
@@ -99,7 +110,16 @@ ul {
   color: #1d4ed8;
 }
 
-/* === TABLE STYLES === */
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  color: #555;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Table Styles */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -126,16 +146,7 @@ td:first-child {
   font-weight: 500;
 }
 
-/* === FOOTER === */
-footer {
-  text-align: center;
-  padding: 2rem 1rem;
-  font-size: 0.9rem;
-  color: #555;
-  border-top: 1px solid #e5e7eb;
-}
-
-/* === RESPONSIVE === */
+/* Responsive */
 @media (max-width: 768px) {
   h1 {
     font-size: 2.2rem;
@@ -149,53 +160,97 @@ footer {
     margin: 6px;
     display: inline-block;
   }
-
-  .hero-grid {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .hero-image img {
-    max-width: 300px;
-    margin-bottom: 1.5rem;
-  }
 }
 
-header {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  padding: 8rem 1rem 4rem 1rem;
-  margin-top: -60px;
-  background-color: transparent;
-}
-
-header::before {
-  content: "";
-  position: absolute;
+.bubble-bg {
+  position: fixed;
   top: 0;
   left: 0;
-  width: 40%; /* restrict to left corner only */
+  width: 100%;
   height: 100%;
-  background-image: url('images/devops-logo-left.png'); /* update with your correct image path */
-  background-size: contain;
-  background-position: left center;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  z-index: -1;
-  opacity: 1; /* keep it full visible */
+  overflow: hidden;
+  z-index: -2;
 }
 
-header h1, header p {
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-.devops-left-placement {
+.bubble {
   position: absolute;
-  top: 1050px; /* Adjust this if needed */
+  bottom: -100px;
+  width: 20px;
+  height: 20px;
+  background: rgba(29, 78, 216, 0.2);
+  border-radius: 50%;
+  animation: rise 20s infinite ease-in-out;
+}
+
+.bubble:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 18s; }
+.bubble:nth-child(2) { left: 25%; animation-delay: 5s; animation-duration: 22s; }
+.bubble:nth-child(3) { left: 40%; animation-delay: 10s; animation-duration: 20s; }
+.bubble:nth-child(4) { left: 60%; animation-delay: 2s; animation-duration: 24s; }
+.bubble:nth-child(5) { left: 80%; animation-delay: 7s; animation-duration: 19s; }
+
+@keyframes rise {
+  0% { transform: translateY(0) scale(1); opacity: 0.3; }
+  50% { opacity: 0.6; }
+  100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+}
+
+.network-bg {
+  position: fixed;
+  top: 0;
   left: 0;
-  width: 280px;
-  height: auto;
-  z-index: 0;
-  opacity: 1;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(29,78,216,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29,78,216,0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.3;
+  z-index: -2;
+  animation: gridShift 60s linear infinite;
+}
+
+@keyframes gridShift {
+  from { background-position: 0 0; }
+  to { background-position: 40px 40px; }
+}
+
+#matrix-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  pointer-events: none;
+  background: transparent;
+}
+
+.flowing-network {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: 
+    radial-gradient(circle at center, rgba(29,78,216,0.05) 2px, transparent 0),
+    radial-gradient(circle at 80% 20%, rgba(29,78,216,0.05) 2px, transparent 0),
+    radial-gradient(circle at 20% 80%, rgba(29,78,216,0.05) 2px, transparent 0);
+  background-size: 100px 100px;
+  background-repeat: repeat;
+  pointer-events: none;
+  z-index: -2;
+  animation: drift 60s linear infinite;
+}
+
+@keyframes drift {
+  0%   { background-position: 0 0, 0 0, 0 0; }
+  100% { background-position: 100px 100px, 200px 50px, 150px 200px; }
+}
+
+#network-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -2;
 }
