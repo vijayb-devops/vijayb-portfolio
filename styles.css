@@ -1,3 +1,4 @@
+/* Reset & Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +15,27 @@ body {
   z-index: 0;
 }
 
-#network-bg,
+/* Particle Background */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background: white;
+}
+
+/* Subtle Gradient Wave Separator */
+.wave-separator {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(180deg, rgba(29,78,216,0.1), transparent);
+  z-index: -1;
+}
+
+/* Cursor Trail Canvas */
 #cursor-canvas {
   position: fixed;
   top: 0;
@@ -25,6 +46,7 @@ body {
   z-index: -1;
 }
 
+/* Typography & Header */
 h1 {
   font-size: 3rem;
   font-weight: 700;
@@ -34,6 +56,7 @@ h1 {
 header {
   text-align: center;
   padding: 4rem 1rem;
+  margin-top: -60px;
 }
 
 header p {
@@ -57,6 +80,7 @@ nav a:hover {
   text-decoration: underline;
 }
 
+/* Sections */
 section {
   padding: 3rem 1rem;
 }
@@ -86,6 +110,7 @@ ul {
   color: #1d4ed8;
 }
 
+/* Footer */
 footer {
   text-align: center;
   padding: 2rem 1rem;
@@ -134,39 +159,5 @@ td:first-child {
   nav a {
     margin: 6px;
     display: inline-block;
-  }
-}
-
-.wave-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -2;
-}
-
-.wave-bg svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-#wavePath {
-  animation: waveMove 10s ease-in-out infinite;
-}
-
-@keyframes waveMove {
-  0% {
-    d: path("M0,100 C300,150 900,50 1200,100 L1200,200 L0,200 Z");
-  }
-  50% {
-    d: path("M0,100 C300,50 900,150 1200,100 L1200,200 L0,200 Z");
-  }
-  100% {
-    d: path("M0,100 C300,150 900,50 1200,100 L1200,200 L0,200 Z");
   }
 }

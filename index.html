@@ -8,15 +8,9 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="wave-bg">
-    <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
-      <path id="wavePath"
-            d="M0,100 C300,150 900,50 1200,100 L1200,200 L0,200 Z"
-            fill="#1d4ed8"/>
-    </svg>
-  </div>
-  
-  <canvas id="cursor-canvas"></canvas>
+<div id="particles-js"></div>
+<div class="wave-separator"></div>
+<canvas id="cursor-canvas"></canvas>
   <header>
    <h1>
   <span style="font-size: 1.8rem; color: #111;">Hello! 👋</span><br>
@@ -202,6 +196,23 @@
   </section>
 
   <footer><p>© 2025 Vijaya B. All rights reserved.</p></footer>
+
+ <script>
+    tsParticles.load("particles-js", {
+      background: { color: { value: "#ffffff" } },
+      particles: {
+        number: { value: 60 },
+        color: { value: "#1d4ed8" },
+        shape: { type: "circle" },
+        opacity: { value: 0.3 },
+        size: { value: 3 },
+        move: { enable: true, speed: 0.6, outModes: "out" },
+        links: { enable: true, distance: 120, color: "#1d4ed8", opacity: 0.2, width: 1 }
+      },
+      fullScreen: { enable: false },
+      detectRetina: true
+    });
+  </script>  
 
 <script>
 ;(function(){
