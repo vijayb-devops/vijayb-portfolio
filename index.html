@@ -8,7 +8,14 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <canvas id="matrix-rain"></canvas>
+    <div class="wave-bg">
+    <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
+      <path id="wavePath"
+            d="M0,100 C300,150 900,50 1200,100 L1200,200 L0,200 Z"
+            fill="#1d4ed8"/>
+    </svg>
+  </div>
+  
   <canvas id="cursor-canvas"></canvas>
   <header>
    <h1>
@@ -244,44 +251,5 @@
   animate();
 })();
 </script>
-<script>
-  const canvas = document.getElementById('matrix-rain');
-  const ctx = canvas.getContext('2d');
-
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-
-  resizeCanvas();
-  window.addEventListener('resize', resizeCanvas);
-
-  const characters = '{}#$>=:_|.%[]~';
-  const fontSize = 14;
-  const columns = Math.floor(canvas.width / fontSize);
-  const drops = new Array(columns).fill(1);
-
-  function drawMatrix() {
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.05)'; // Light fade trail
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = '#1d4ed8'; // DevOps Blue
-    ctx.font = fontSize + 'px monospace';
-
-    for (let i = 0; i < drops.length; i++) {
-      const char = characters[Math.floor(Math.random() * characters.length)];
-      ctx.fillText(char, i * fontSize, drops[i] * fontSize);
-
-      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-        drops[i] = 0;
-      }
-      drops[i]++;
-    }
-
-    requestAnimationFrame(drawMatrix);
-  }
-
-  drawMatrix();
-</script>  
 </body>
 </html>
