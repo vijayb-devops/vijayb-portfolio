@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <div class="flowing-network"></div>
   <meta charset="UTF-8">
@@ -7,10 +8,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
 </head>
 <body>
   <canvas id="matrix-rain"></canvas>
-  <canvas id="cursor-canvas"></canvas>
+<div class="wave-separator"></div>
+<div class="bubble-bg">
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+</div>
+<div class="network-bg"></div>
+<canvas id="cursor-canvas"></canvas>
   <header>
    <h1>
   <span style="font-size: 1.8rem; color: #111;">Hello! 👋</span><br>
@@ -196,6 +207,23 @@
   </section>
 
   <footer><p>© 2025 Vijaya B. All rights reserved.</p></footer>
+
+ <script>
+    tsParticles.load("particles-js", {
+      background: { color: { value: "#ffffff" } },
+      particles: {
+        number: { value: 60 },
+        color: { value: "#1d4ed8" },
+        shape: { type: "circle" },
+        opacity: { value: 0.3 },
+        size: { value: 3 },
+        move: { enable: true, speed: 0.6, outModes: "out" },
+        links: { enable: true, distance: 120, color: "#1d4ed8", opacity: 0.2, width: 1 }
+      },
+      fullScreen: { enable: false },
+      detectRetina: true
+    });
+  </script>  
 
 <script>
 ;(function(){

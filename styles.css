@@ -1,3 +1,4 @@
+/* Reset & Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +15,27 @@ body {
   z-index: 0;
 }
 
-#network-bg,
+/* Particle Background */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background: white;
+}
+
+/* Subtle Gradient Wave Separator */
+.wave-separator {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(180deg, rgba(29,78,216,0.1), transparent);
+  z-index: -1;
+}
+
+/* Cursor Trail Canvas */
 #cursor-canvas {
   position: fixed;
   top: 0;
@@ -25,6 +46,7 @@ body {
   z-index: -1;
 }
 
+/* Typography & Header */
 h1 {
   font-size: 3rem;
   font-weight: 700;
@@ -34,6 +56,7 @@ h1 {
 header {
   text-align: center;
   padding: 4rem 1rem;
+  margin-top: -60px;
 }
 
 header p {
@@ -57,6 +80,7 @@ nav a:hover {
   text-decoration: underline;
 }
 
+/* Sections */
 section {
   padding: 3rem 1rem;
 }
@@ -86,6 +110,7 @@ ul {
   color: #1d4ed8;
 }
 
+/* Footer */
 footer {
   text-align: center;
   padding: 2rem 1rem;
@@ -135,6 +160,58 @@ td:first-child {
     margin: 6px;
     display: inline-block;
   }
+}
+
+.bubble-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -2;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -100px;
+  width: 20px;
+  height: 20px;
+  background: rgba(29, 78, 216, 0.2);
+  border-radius: 50%;
+  animation: rise 20s infinite ease-in-out;
+}
+
+.bubble:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 18s; }
+.bubble:nth-child(2) { left: 25%; animation-delay: 5s; animation-duration: 22s; }
+.bubble:nth-child(3) { left: 40%; animation-delay: 10s; animation-duration: 20s; }
+.bubble:nth-child(4) { left: 60%; animation-delay: 2s; animation-duration: 24s; }
+.bubble:nth-child(5) { left: 80%; animation-delay: 7s; animation-duration: 19s; }
+
+@keyframes rise {
+  0% { transform: translateY(0) scale(1); opacity: 0.3; }
+  50% { opacity: 0.6; }
+  100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+}
+
+.network-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(29,78,216,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29,78,216,0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.3;
+  z-index: -2;
+  animation: gridShift 60s linear infinite;
+}
+
+@keyframes gridShift {
+  from { background-position: 0 0; }
+  to { background-position: 40px 40px; }
 }
 
 #matrix-rain {
