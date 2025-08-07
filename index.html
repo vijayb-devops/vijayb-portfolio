@@ -9,7 +9,6 @@
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
 </head>
 <body>
-<canvas id="network-canvas"></canvas>  
 <canvas id="cursor-canvas"></canvas>
   <header>
    <h1>
@@ -261,50 +260,6 @@
 
   animate();
 })();
-</script>
-<script>
-  const canvas = document.getElementById('network-canvas');
-  const ctx = canvas.getContext('2d');
-  let width, height;
-  window.addEventListener('resize', () => {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-  });
-  window.dispatchEvent(new Event('resize'));
-
-  const nodes = Array.from({length: 50}, () => ({
-    x: Math.random() * width,
-    y: Math.random() * height,
-    vx: (Math.random() - 0.5) * 0.2,
-    vy: (Math.random() - 0.5) * 0.2
-  }));
-
-  function animate() {
-    ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = '#1d4ed8';
-    nodes.forEach(n => {
-      n.x += n.vx; n.y += n.vy;
-      if (n.x < 0 || n.x > width) n.vx *= -1;
-      if (n.y < 0 || n.y > height) n.vy *= -1;
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, 2, 0, 2 * Math.PI);
-      ctx.fill();
-      nodes.forEach(o => {
-        const dx = n.x - o.x, dy = n.y - o.y, dist = Math.hypot(dx, dy);
-        if (dist < 150) {
-          ctx.strokeStyle = `rgba(29, 78, 216, ${1 - dist / 150})`;
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(n.x, n.y);
-          ctx.lineTo(o.x, o.y);
-          ctx.stroke();
-        }
-      });
-    });
-    requestAnimationFrame(animate);
-  }
-
-  animate();
 </script>
 </body>
 </html>
