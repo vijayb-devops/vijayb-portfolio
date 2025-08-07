@@ -263,43 +263,48 @@
 })();
 </script>
 <script>
-  const canvas = document.getElementById('matrix-rain');
+  const canvas = document.getElementById('network-canvas');
   const ctx = canvas.getContext('2d');
+  let width, height;
+  window.addEventListener('resize', () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  });
+  window.dispatchEvent(new Event('resize'));
 
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+  const nodes = Array.from({length: 50}, () => ({
+    x: Math.random() * width,
+    y: Math.random() * height,
+    vx: (Math.random() - 0.5) * 0.2,
+    vy: (Math.random() - 0.5) * 0.2
+  }));
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    ctx.fillStyle = '#1d4ed8';
+    nodes.forEach(n => {
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0 || n.x > width) n.vx *= -1;
+      if (n.y < 0 || n.y > height) n.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, 2, 0, 2 * Math.PI);
+      ctx.fill();
+      nodes.forEach(o => {
+        const dx = n.x - o.x, dy = n.y - o.y, dist = Math.hypot(dx, dy);
+        if (dist < 150) {
+          ctx.strokeStyle = `rgba(29, 78, 216, ${1 - dist / 150})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(n.x, n.y);
+          ctx.lineTo(o.x, o.y);
+          ctx.stroke();
+        }
+      });
+    });
+    requestAnimationFrame(animate);
   }
 
-  resizeCanvas();
-  window.addEventListener('resize', resizeCanvas);
-
-  const characters = '{}#$>=:_|.%[]~';
-  const fontSize = 14;
-  const columns = Math.floor(canvas.width / fontSize);
-  const drops = new Array(columns).fill(1);
-
-  function drawMatrix() {
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.05)'; // Light fade trail
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = '#1d4ed8'; // DevOps Blue
-    ctx.font = fontSize + 'px monospace';
-
-    for (let i = 0; i < drops.length; i++) {
-      const char = characters[Math.floor(Math.random() * characters.length)];
-      ctx.fillText(char, i * fontSize, drops[i] * fontSize);
-
-      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-        drops[i] = 0;
-      }
-      drops[i]++;
-    }
-
-    requestAnimationFrame(drawMatrix);
-  }
-
-  drawMatrix();
-</script>  
+  animate();
+</script>
 </body>
 </html>
